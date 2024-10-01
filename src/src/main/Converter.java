@@ -212,16 +212,37 @@ public class Converter extends javax.swing.JFrame {
 
         variable1.setText("");
         variable2.setText("");
+        
+        // remove event listeners
+        unitSelector1.removeActionListener(unitSelector1.getActionListeners()[0]);
+        unitSelector2.removeActionListener(unitSelector2.getActionListeners()[0]);
+
 
         unitSelector1.removeAllItems();
         unitSelector2.removeAllItems();
 
         String[] selections = selection.equals("Area") ? areaSelection : angleSelection;
+
         Arrays.stream(selections).forEach(item -> {
             unitSelector1.addItem(item);
             unitSelector2.addItem(item);
         });
         unitSelector2.setSelectedIndex(1);
+
+        // add event listeners
+        unitSelector1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitSelector1ActionPerformed(evt);
+            }
+        });
+
+        unitSelector2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitSelector2ActionPerformed(evt);
+            }
+        });
+
+
     }// GEN-LAST:event_convertSelectorActionPerformed
 
     private void unitSelector1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_unitSelector1ActionPerformed
