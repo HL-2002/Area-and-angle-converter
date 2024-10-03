@@ -15,7 +15,7 @@ public class Converter extends javax.swing.JFrame {
     /**
      * Creates new form Converter
      */
-
+    
     private String areaSelection[] = new String[] {
             "Square Kilometre", "Square metre", "Square mile", "Square yard",
             "Square foot", "Square inch", "Hectare", "Acre"
@@ -45,6 +45,7 @@ public class Converter extends javax.swing.JFrame {
         unitSelector1.setSelectedIndex(0);
         unitSelector2.setSelectedIndex(1);
         isInitialized = true;
+        setResizable(false);
     }
 
     /**
