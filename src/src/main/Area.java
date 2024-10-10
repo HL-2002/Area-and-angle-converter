@@ -5,6 +5,7 @@
 package main;
 
 import java.util.Map;
+import java.math.BigDecimal;
 
 /**
  *
@@ -90,9 +91,9 @@ public class Area extends Unit {
     }
     
     @Override
-  protected Result transform(float value, String from, String to) {
+  protected Result transform(BigDecimal value, String from, String to) {
     Conversion conversion = conversions.get(from).get(to);
-    return new Result(value * conversion.getFactor(), conversion.getFormula());
+    return new Result(value.multiply(BigDecimal.valueOf(conversion.getFactor())), conversion.getFormula());
   
   }
     

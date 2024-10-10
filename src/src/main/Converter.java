@@ -5,6 +5,7 @@
 package main;
 
 import java.util.Arrays;
+import java.math.BigDecimal;
 
 /**
  *
@@ -181,9 +182,9 @@ public class Converter extends javax.swing.JFrame {
         Runnable makeExecute = !value.equals("") ? () -> {
             // use the conversion
             try {
-                Result result = unit.transform(Float.parseFloat(value), (String) unitSelector2.getSelectedItem(),
+                Result result = unit.transform(new BigDecimal(value), (String) unitSelector2.getSelectedItem(),
                         (String) unitSelector1.getSelectedItem());
-                variable1.setText(String.valueOf(result.getValue()));
+                variable1.setText(result.getValue());
             }
             // manaje float exception
             catch (NumberFormatException e) {
@@ -293,7 +294,7 @@ public class Converter extends javax.swing.JFrame {
             String value = variable1.getText();
             String from = (String) unitSelector1.getSelectedItem();
             String to = (String) unitSelector2.getSelectedItem();
-            float valueFloat = Float.parseFloat(value);
+            BigDecimal valueFloat = new BigDecimal(value);
             Result result = unit.transform(valueFloat, from, to);
             formulaLabel.setText(result.getUnit());
             variable2.setText(String.valueOf(result.getValue()));

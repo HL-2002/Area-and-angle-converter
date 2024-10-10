@@ -5,6 +5,7 @@
 package main;
 
 import java.util.Map;
+import java.math.BigDecimal;
 
 /**
  * la clase debe almacenar las unidades de medida y sus factores de conversión
@@ -16,5 +17,5 @@ public abstract class Unit {
       Map<String, Conversion>
   > conversions;  
   
-  protected abstract Result transform(float value, String from, String to);
+  protected abstract Result transform(BigDecimal value, String from, String to);
 }
